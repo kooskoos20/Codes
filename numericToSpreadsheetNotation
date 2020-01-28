@@ -1,0 +1,21 @@
+#include<iostream>
+
+using namespace std;
+
+void numericToSpreadsheetNotation(long long num){
+    if(num == 0) return;
+    if(num<27){ 
+        cout<<char(num  + 64);
+        return;
+    }
+    int error = num%26==0 ? -1 : 0;
+    numericToSpreadsheetNotation(num/26+error);
+    cout<<char((num%26 ? num%26 : 26) + 64);
+}
+
+int main(){
+    long long a;
+    cin>>a;
+    numericToSpreadsheetNotation(a);
+    return 0;
+}

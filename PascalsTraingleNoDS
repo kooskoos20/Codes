@@ -1,0 +1,33 @@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+    int r = 30, a[30];
+    a[0]=a[1]=1;
+    for(int i=r;i>0;i--){
+        for(int j=0;j<i-1;j++)  cout<<" ";
+        a[0]=a[r-i]=1;
+        int temp=1, old=a[temp-1];
+        for(int k=0;k<2*(r-i+1)-1;k++) {
+            
+            if(k%2==0){
+                if(i>r-2)
+                cout<<"1";
+                else{
+                    if(k==0 || k==2*(r-i+1)-2)  cout<<"1";
+                    else{ 
+                        cout<<a[temp]+old;
+                        int temp_temp = a[temp];
+                        a[temp] = a[temp]+old;
+                        old = temp_temp;
+                        temp++;
+                    }
+                }
+            }
+            else cout<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
